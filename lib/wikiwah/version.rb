@@ -1,3 +1,3 @@
-class WikiWah
-  VERSION = "0.0.1"
+module WikiWah
+  VERSION = "0.0.2".freeze
 end

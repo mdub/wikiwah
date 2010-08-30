@@ -2,7 +2,7 @@
 
 require 'cgi'                   # for escapeHTML
 
-class WikiWah
+module WikiWah
 
   # Flow deals with block-level formatting in WikiWah.  Input text is split
   # into paragraphs, separated by blank lines.  A list-item bullet also

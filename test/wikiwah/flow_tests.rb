@@ -401,7 +401,7 @@ after
 </p>
 END_OF_TESTS
 
-class WikiWah
+module WikiWah
   class FlowTests < Test::Unit::TestCase
 
     TESTS.split(/\n====.*\n/).each_with_index do |test, i|

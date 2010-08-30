@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-class WikiWah
+module WikiWah
 
   # Subst handles text-transformation using a series of regular-expression
   # substitutions.  It encapsulates a number of "patterns", and associated

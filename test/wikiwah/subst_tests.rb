@@ -3,7 +3,7 @@
 require 'wikiwah/subst'
 require 'test/unit'
 
-class WikiWah
+module WikiWah
 
   class Subst_Tests < Test::Unit::TestCase
     

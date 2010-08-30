@@ -5,12 +5,8 @@ require 'test/unit'
 
 class WikiWahTests < Test::Unit::TestCase
 
-  def setup
-    @wikiwah = WikiWah.new
-  end
-
   def assert_wikiwah(expected, input)
-    assert_equal(expected, @wikiwah.to_html(input))
+    assert_equal(expected, Wikiwah.convert(input))
   end
 
   def test_empty

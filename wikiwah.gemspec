@@ -1,7 +1,7 @@
 require File.expand_path("../lib/wikiwah/version", __FILE__)
 
 description = <<-EOF
-Wikiwah is a text-to-HTML converter, along the lines of Markdown.  
+WikiWah is a text-to-HTML converter, along the lines of Markdown.  
 
 This isn't the markup language you're looking for.  
 It offers no improvements on Markdown, Textile, etc.  
