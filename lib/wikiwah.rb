@@ -48,6 +48,10 @@ class WikiWah
     end
   end
   
+  def self.to_html(text)
+    self.new.to_html(text)
+  end
+  
   private
 
   def translate_link(link)
