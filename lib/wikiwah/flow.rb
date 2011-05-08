@@ -60,7 +60,7 @@ module WikiWah
     
     # Process multi-line input
     def add_input(input) 
-      input.each do |line|
+      input.each_line do |line|
         if (line =~ BlankRegexp)
           start_new_block
         else

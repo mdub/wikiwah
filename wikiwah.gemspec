@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.authors = ["Mike Williams"]
   gem.email = "mdub@dogbiscuit.org"
 
-  gem.version = WikiWah::VERSION
+  gem.version = WikiWah::VERSION.dup
   gem.platform = Gem::Platform::RUBY
 
   gem.require_path = "lib"
