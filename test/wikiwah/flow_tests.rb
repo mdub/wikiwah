@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
- 
+
 require 'wikiwah/flow'
 require 'test/unit'
 
@@ -165,14 +165,14 @@ P2
 
 ==== # Code
 | code
-| 
+|
 | more code
 ----
 <pre>
-code
+<code>code
 
 more code
-</pre>
+</code></pre>
 
 ==== # Blockquote
 > block
@@ -222,8 +222,8 @@ item
 </li>
 </ul>
 <pre>
-code
-</pre>
+<code>code
+</code></pre>
 
 ====
 * item
@@ -235,8 +235,8 @@ code
 item
 </li>
 <pre>
-code
-</pre>
+<code>code
+</code></pre>
 </ul>
 
 ====
@@ -333,10 +333,10 @@ two
 | z
 ----
 <pre>
-x
+<code>x
 |y|
 z
-</pre>
+</code></pre>
 
 ====
 - list item
@@ -417,6 +417,6 @@ module WikiWah
       end
     end
 
-  end 
+  end
 end
- 
+

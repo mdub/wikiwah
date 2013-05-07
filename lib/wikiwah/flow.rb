@@ -28,7 +28,7 @@ module WikiWah
   #
   class Flow
 
-    # Convert +input+ text to HTML. 
+    # Convert +input+ text to HTML.
     #
     # An optional +filter+ block may be provided, in which case it's
     # applied to the body of each block.
@@ -38,18 +38,18 @@ module WikiWah
       parser.process(input)
       buff
     end
-    
+
     # Patterns that start a new block
     BlankRegexp = /\A *$/
     BulletRegexp = Regexp.new('\A *([\*\-\#]|\d+\.|\(\d+\)) ')
-    
+
     def initialize(out, text_filter=null)
       @out = out
       @text_filter = text_filter
       @context_stack = [TopContext]
       @block_buffer = nil
     end
-    
+
     # Process a multi-line input string
     def process(input)
       add_input(input)
@@ -57,22 +57,22 @@ module WikiWah
     end
 
     private
-    
+
     # Process multi-line input
-    def add_input(input) 
+    def add_input(input)
       input.each_line do |line|
         if (line =~ BlankRegexp)
           start_new_block
         else
           if (line =~ BulletRegexp)
-            start_new_block 
+            start_new_block
           end
           append_to_block(line)
         end
       end
       start_new_block
     end
-    
+
     # Append a line to the block
     def append_to_block(line)
       @block_buffer = (@block_buffer || '') + line
@@ -80,7 +80,7 @@ module WikiWah
 
     # Flush the buffered block
     def start_new_block
-      if (@block_buffer) 
+      if (@block_buffer)
         add_block(@block_buffer)
         @block_buffer = nil
       end
@@ -108,7 +108,7 @@ module WikiWah
       when /\A(( *)\| )/          # preformatted (explicit)
         push_context('pre',$2.size)
         block = strip_prefix($1, block)
-        write_html(CGI.escapeHTML(block))
+        write_html("<code>" + CGI.escapeHTML(block) + "</code>")
       when /\A( *)(=+) /        # heading
         flush_context_stack
         write_tag($', "h#{$2.size}")
@@ -126,7 +126,7 @@ module WikiWah
         write_text(block)
       end
     end
-    
+
     def strip_prefix(prefix, text)
       pattern = '^' + Regexp.quote(prefix)
       pattern.sub!(/\\ $/, '( |$)')
@@ -140,12 +140,12 @@ module WikiWah
       write_text(content)
       write_html("</#{tag}>\n")
     end
-    
+
     # Write HTML markup
     def write_html(html)
       @out << html
     end
-    
+
     # Write text content, performing any necessary substitutions
     def write_text(text)
       if (@text_filter)
@@ -153,10 +153,10 @@ module WikiWah
       end
       @out << text
     end
-    
+
     Context = Struct.new('Context', :tag, :level)
     TopContext = Context.new(:top, -1)
-    
+
     # Get the current Context
     def context
       @context_stack.last
@@ -191,7 +191,7 @@ module WikiWah
       cxt = @context_stack.pop
       write_html("</#{cxt.tag}>\n")
     end
-    
+
     def pop_context_to_level(level)
       while (context.level > level)
         pop_context
@@ -204,7 +204,7 @@ module WikiWah
         pop_context
       end
     end
-    
+
   end
 
 end
