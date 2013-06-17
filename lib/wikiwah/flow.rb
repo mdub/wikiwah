@@ -89,36 +89,54 @@ module WikiWah
     # Add a block
     def add_block(block)
       case block
-      when /\A( *)- /             # unordered list item
+
+      # unordered list item
+      when /\A( *)- /
         push_context('ul',$1.size)
         write_tag($', 'li')
-      when /\A( *)\* /            # unordered list item
+
+      # unordered list item
+      when /\A( *)\* /
         push_context('ul class="sparse"',$1.size)
         write_tag($', 'li')
-      when /\A( *)(\#|\d+\.|\(\d+\)) / # ordered list item
+
+      # ordered list item
+      when /\A( *)(\#|\d+\.|\(\d+\)) /
         push_context('ol',$1.size)
         write_tag($', 'li')
-      when /\A( *)% /             # unordered list item
+
+      # unordered list item
+      when /\A( *)% /
         push_context('dl',$1.size)
         write_tag($', 'dt')
-      when /\A(( *)> )/           # citation
+
+      # citation
+      when /\A(( *)> )/
         push_context('blockquote',$2.size)
         block = strip_prefix($1, block)
         write_text(block)
-      when /\A(( *)\| )/          # preformatted
+
+      # preformatted
+      when /\A(( *)\| )/
         push_context('pre',$2.size)
         block = strip_prefix($1, block)
         write_html("<code>" + CGI.escapeHTML(block) + "</code>")
-      when /\A( *)\,-- (\w+).*\n/ # preformatted (with language)
+
+      # preformatted (with language)
+      when /\A( *)\,-- (\S+).*\n/
         indent = $1
         lang = $2
         push_context('pre',indent.size)
         block = strip_prefix(indent + "| ", $')
         write_html(%(<code class="#{lang}">) + CGI.escapeHTML(block) + "</code>")
-      when /\A( *)(=+) /          # heading
+
+      # heading
+      when /\A( *)(=+) /
         flush_context_stack
         write_tag($', "h#{$2.size}")
-      when /\A( *)/        	      # body text
+
+      # body text
+      when /\A( *)/
         tag = \
         if $1 == ""
           'p'
@@ -130,6 +148,7 @@ module WikiWah
         push_context(tag,$1.size,true)
         block = strip_prefix($1, block)
         write_text(block)
+
       end
     end
 

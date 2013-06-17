@@ -175,13 +175,13 @@ more code
 </code></pre>
 
 ==== # Code with language specified
-,-- fnordscript --
+,-- fnord-script --
 | code
 |
 | more code
 ----
 <pre>
-<code class="fnordscript">code
+<code class="fnord-script">code
 
 more code
 </code></pre>
