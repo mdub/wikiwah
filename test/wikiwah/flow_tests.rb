@@ -181,7 +181,7 @@ more code
 | more code
 ----
 <pre>
-<code lang="fnordscript">code
+<code class="fnordscript">code
 
 more code
 </code></pre>

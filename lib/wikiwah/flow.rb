@@ -114,7 +114,7 @@ module WikiWah
         lang = $2
         push_context('pre',indent.size)
         block = strip_prefix(indent + "| ", $')
-        write_html(%(<code lang="#{lang}">) + CGI.escapeHTML(block) + "</code>")
+        write_html(%(<code class="#{lang}">) + CGI.escapeHTML(block) + "</code>")
       when /\A( *)(=+) /          # heading
         flush_context_stack
         write_tag($', "h#{$2.size}")
