@@ -174,6 +174,18 @@ P2
 more code
 </code></pre>
 
+==== # Code with language specified
+,-- fnordscript --
+| code
+|
+| more code
+----
+<pre>
+<code lang="fnordscript">code
+
+more code
+</code></pre>
+
 ==== # Blockquote
 > block
 > quote
