@@ -123,12 +123,14 @@ module WikiWah
         write_html("<samp>" + CGI.escapeHTML(block) + "</samp>")
 
       # preformatted (with language)
-      when /\A( *)\,-- (\S+).*\n/
+      when /\A( *)\,--(?: *(\S+))?.*\n/
         indent = $1
         lang = $2
         push_context('pre',indent.size)
         block = strip_prefix(indent + "| ", $')
-        write_html(%(<code class="#{lang}">) + CGI.escapeHTML(block) + "</code>")
+        code_tag = "code"
+        code_tag += %( class="#{lang}") if lang
+        write_html("<#{code_tag}>" + CGI.escapeHTML(block) + "</code>")
 
       # heading
       when /\A( *)(=+) /

@@ -174,16 +174,28 @@ P2
 more code
 </samp></pre>
 
-==== # Code with language specified
-,-- fnord-script --
+==== # Code
+,--
 | code
 |
 | more code
 ----
 <pre>
-<code class="fnord-script">code
+<code>code
 
 more code
+</code></pre>
+
+==== # Code with language specified
+,-- fnord-script --
+| fnord
+|
+| fnord fnord
+----
+<pre>
+<code class="fnord-script">fnord
+
+fnord fnord
 </code></pre>
 
 ==== # Blockquote
