@@ -26,7 +26,7 @@ module WikiWah
       end
 
       def init_transformer
-        @transformer = WikiWah::Subst.new 
+        @transformer = WikiWah::Subst.new
         @transformer.add_transformation(/""(.+)""/) do |match|
           # Double-double-quoted
           CGI.escapeHTML(match[1])
@@ -35,9 +35,9 @@ module WikiWah
           # Backslash-quoted
           match[1]
         end
-        @transformer.add_transformation(/\<(.+?)\>/m) do |match| 
+        @transformer.add_transformation(/\<(.+?)\>/m) do |match|
           # In-line HTML
-          match[0] 
+          match[0]
         end
         @transformer.add_transformation(/\{(.+?)\}(@(\S*[\w\/]))?/m) do |match|
           # Distinuished link
@@ -57,7 +57,7 @@ module WikiWah
           # Bold/italic/etc.
           tag = case match[2]
           when '*'; 'strong'
-          when '+'; 'tt'
+          when '+'; 'samp'
           when '/'; 'em'
           when '_'; 'u'
           end
