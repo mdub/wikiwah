@@ -116,21 +116,27 @@ module WikiWah
         block = strip_prefix($1, block)
         write_text(block)
 
-      # output sample
+      # preformatted
       when /\A(( *)\| )/
         push_context('pre',$2.size)
         block = strip_prefix($1, block)
-        write_html("<samp>" + CGI.escapeHTML(block) + "</samp>")
+        write_html(CGI.escapeHTML(block))
 
-      # preformatted (with language)
+      # preformatted (with element and class)
       when /\A( *)\,--(?: *(\S+))?.*\n/
         indent = $1
-        lang = $2
+        html_element, *html_classes = $2.split('.')
         push_context('pre',indent.size)
         block = strip_prefix(indent + "| ", $')
-        code_tag = "code"
-        code_tag += %( class="#{lang}") if lang
-        write_html("<#{code_tag}>" + CGI.escapeHTML(block) + "</code>")
+        block = CGI.escapeHTML(block)
+        if html_element
+          open_tag = html_element
+          unless html_classes.empty?
+            open_tag += %( class="#{html_classes.join(' ')}")
+          end
+          block = "<#{open_tag}>" + CGI.escapeHTML(block) + "</#{html_element}>"
+        end
+        write_html(block)
 
       # heading
       when /\A( *)(=+) /

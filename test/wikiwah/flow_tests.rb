@@ -163,7 +163,19 @@ item 1
 P2
 </p>
 
+==== # Preformatted
+| code
+|
+| more code
+----
+<pre>
+code
+
+more code
+</pre>
+
 ==== # Output sample
+,-- samp --
 | code
 |
 | more code
@@ -175,7 +187,7 @@ more code
 </samp></pre>
 
 ==== # Code
-,--
+,-- code --
 | code
 |
 | more code
@@ -187,7 +199,7 @@ more code
 </code></pre>
 
 ==== # Code with language specified
-,-- fnord-script --
+,-- code.fnord-script --
 | fnord
 |
 | fnord fnord
@@ -246,8 +258,8 @@ item
 </li>
 </ul>
 <pre>
-<samp>code
-</samp></pre>
+code
+</pre>
 
 ====
 * item
@@ -259,8 +271,8 @@ item
 item
 </li>
 <pre>
-<samp>code
-</samp></pre>
+code
+</pre>
 </ul>
 
 ====
@@ -357,10 +369,10 @@ two
 | z
 ----
 <pre>
-<samp>x
+x
 |y|
 z
-</samp></pre>
+</pre>
 
 ====
 - list item
