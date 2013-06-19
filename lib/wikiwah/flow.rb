@@ -134,7 +134,7 @@ module WikiWah
           unless html_classes.empty?
             open_tag += %( class="#{html_classes.join(' ')}")
           end
-          block = "<#{open_tag}>" + CGI.escapeHTML(block) + "</#{html_element}>"
+          block = "<#{open_tag}>" + block + "</#{html_element}>"
         end
         write_html(block)
 
