@@ -116,11 +116,11 @@ module WikiWah
         block = strip_prefix($1, block)
         write_text(block)
 
-      # preformatted
+      # output sample
       when /\A(( *)\| )/
         push_context('pre',$2.size)
         block = strip_prefix($1, block)
-        write_html("<code>" + CGI.escapeHTML(block) + "</code>")
+        write_html("<samp>" + CGI.escapeHTML(block) + "</samp>")
 
       # preformatted (with language)
       when /\A( *)\,-- (\S+).*\n/

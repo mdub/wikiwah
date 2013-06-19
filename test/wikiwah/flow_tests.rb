@@ -163,16 +163,16 @@ item 1
 P2
 </p>
 
-==== # Code
+==== # Output sample
 | code
 |
 | more code
 ----
 <pre>
-<code>code
+<samp>code
 
 more code
-</code></pre>
+</samp></pre>
 
 ==== # Code with language specified
 ,-- fnord-script --
@@ -234,8 +234,8 @@ item
 </li>
 </ul>
 <pre>
-<code>code
-</code></pre>
+<samp>code
+</samp></pre>
 
 ====
 * item
@@ -247,8 +247,8 @@ item
 item
 </li>
 <pre>
-<code>code
-</code></pre>
+<samp>code
+</samp></pre>
 </ul>
 
 ====
@@ -345,10 +345,10 @@ two
 | z
 ----
 <pre>
-<code>x
+<samp>x
 |y|
 z
-</code></pre>
+</samp></pre>
 
 ====
 - list item
